@@ -77,7 +77,7 @@ var PreloadState = {
         game.load.image('smoke3', 'assets/smoke3.png');
         game.load.image('smoke4', 'assets/smoke4.png'); 
         game.load.audio('jump', 'assets/jump.ogg');
-        game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
+        game.load.tilemap('level11', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
@@ -322,7 +322,7 @@ function setupPhysics(){
         //create physics 
         game.physics.startSystem(Phaser.Physics.P2JS);
         game.physics.p2.friction = 1;
-        game.physics.p2.gravity.y = 2000; 
+       
         game.physics.p2.setImpactEvents(true);
         
         //create collisiongroups
@@ -346,7 +346,7 @@ function setupPhysics(){
 
         
         game.physics.p2.setWorldMaterial(iceMaterial, true, true, true, true);
-        game.physics.p2.updateBoundsCollisionGroup();
+        //game.physics.p2.updateBoundsCollisionGroup();
         
 
 }
@@ -644,7 +644,9 @@ function marioHit(object){
 
 
 function marioHit(playerbody,enemybody){
-
+        
+        console.flog('ibinabug')
+        
         if (touching(enemybody.sprite,'up')  ){
             enemybody.reset(game.camera.x+game.camera.width,Math.random()*game.world.height-40);
             enemybody.setCollisionGroup(enemyCG);
