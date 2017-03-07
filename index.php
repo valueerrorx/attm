@@ -157,14 +157,7 @@ var Level2 = {
         createPlayer()
         createGroups()
         createInput();
-        menutheme = game.add.audio('theme');       
-        menutheme.volume = 1;
-        menutheme.loop = true;
-        menutheme.play();
-        
-        
-        
-        
+
     },
     update: function() {
         gameUpdateLoop()
