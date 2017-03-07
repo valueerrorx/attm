@@ -21,6 +21,7 @@
 
 
     
+    
 angle = 0; 
 nextFire = 0;
 fireRate = 200; 
@@ -77,7 +78,11 @@ var PreloadState = {
         game.load.image('smoke3', 'assets/smoke3.png');
         game.load.image('smoke4', 'assets/smoke4.png'); 
         game.load.audio('jump', 'assets/jump.ogg');
-        game.load.tilemap('level11', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
+
+        game.load.audio('theme', 'assets/mariotheme.ogg');
+
+        game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
+
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
@@ -346,6 +351,7 @@ function jump(){
 function setupPhysics(){
         //create physics 
         game.physics.startSystem(Phaser.Physics.P2JS);
+        game.physics.p2.gravity.y = 1000;
         game.physics.p2.friction = 1;
         
         game.physics.p2.setImpactEvents(true);
@@ -402,6 +408,8 @@ function setupMap(level){
     green = game.add.tileSprite(0, 480, 4800, 960, 'green');
     darkgreen = game.add.tileSprite(0,480, 4800, 960, 'darkgreen');
 
+    music = game.add.audio('theme');
+    music.play();
 
     mymap = game.add.tilemap(level);
     mymap.addTilesetImage('tileset');
@@ -431,8 +439,7 @@ function setupMap(level){
 
 
 
-
-
+    
 
 
 
