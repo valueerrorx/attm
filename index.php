@@ -670,7 +670,7 @@ function marioHit(object){
 
 function marioHit(playerbody,enemybody){
         
-        console.flog('ibinabug')
+        console.log('ibinabug')
         
         if (touching(enemybody.sprite,'up')  ){
             enemybody.reset(game.camera.x+game.camera.width,Math.random()*game.world.height-40);
