@@ -17,6 +17,12 @@
     <div id=preview name=preview ></div>
     <script type="text/javascript">
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> bdd11bb8d3b360c185323955735ac468a083f493
     
 angle = 0; 
 nextFire = 0;
@@ -74,8 +80,17 @@ var PreloadState = {
         game.load.image('smoke3', 'assets/smoke3.png');
         game.load.image('smoke4', 'assets/smoke4.png'); 
         game.load.audio('jump', 'assets/jump.ogg');
+<<<<<<< HEAD
+        game.load.tilemap('level11', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
+=======
+
+        game.load.audio('theme', 'assets/mariotheme.ogg');
+
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
+
+>>>>>>> d5d2d9c6354903884c1a8c4e2d2c5997ad34022e
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
+        game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
         
@@ -113,6 +128,12 @@ var MenuState = {
         var number = game.add.bitmapText(button.x, button.y, 'desyrel','2', 34);
         number.anchor.setTo(0.5,0.5);
         
+              
+        var button = game.add.button(300, 100, 'levelbutton', function(){ 
+            game.state.start('level3');}, this, 0, 0, 0);
+        button.anchor.setTo(0.5,0.5);
+        var number = game.add.bitmapText(button.x, button.y, 'desyrel','3', 34);
+        number.anchor.setTo(0.5,0.5);
         
     },
     update: function() {
@@ -165,12 +186,30 @@ var Level2 = {
 
 
 
+var Level3 = {
+    create: function() {
+        gamestate = "running";
+        setupPhysics();
+        setupMap("level3");
+        createObjects()
+        createEmitters()
+        createPlayer()
+        createGroups()
+        createInput();
+    },
+    update: function() {
+        gameUpdateLoop()
+    }
+}
+
+
 var game = new Phaser.Game(800, 480, Phaser.AUTO, 'preview');
 game.state.add('boot', BootState, true);
 game.state.add('preload', PreloadState, false);
 game.state.add('menu', MenuState, false);
 game.state.add('level1', Level1, false);  
 game.state.add('level2', Level2, false);  
+game.state.add('level3', Level3, false);
 
 
 
@@ -325,9 +364,9 @@ function jump(){
 function setupPhysics(){
         //create physics 
         game.physics.startSystem(Phaser.Physics.P2JS);
-        game.physics.p2.gravity.y = 1000;
+        game.physics.p2.gravity.y = 4000;
         game.physics.p2.friction = 1;
-       
+        
         game.physics.p2.setImpactEvents(true);
         
         //create collisiongroups
@@ -382,6 +421,8 @@ function setupMap(level){
     green = game.add.tileSprite(0, 480, 4800, 960, 'green');
     darkgreen = game.add.tileSprite(0,480, 4800, 960, 'darkgreen');
 
+    music = game.add.audio('theme');
+    music.play();
 
     mymap = game.add.tilemap(level);
     mymap.addTilesetImage('tileset');
@@ -411,8 +452,7 @@ function setupMap(level){
 
 
 
-
-
+    
 
 
 
