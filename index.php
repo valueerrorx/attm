@@ -17,9 +17,12 @@
     <div id=preview name=preview ></div>
     <script type="text/javascript">
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> bdd11bb8d3b360c185323955735ac468a083f493
     
 angle = 0; 
 nextFire = 0;
@@ -58,7 +61,7 @@ var PreloadState = {
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
         game.load.spritesheet('menucorner','./assets/menucorner.png',64,64);
         game.load.image('platform', 'assets/cloud-platform.png');
-       
+        game.load.audio('theme', 'assets/mariotheme.ogg');
         game.load.image('clouds', './assets/clouds.jpg');
         game.load.image('darkgreen', './assets/darkgreen.png');
         game.load.image('green', './assets/green.png');
@@ -152,6 +155,7 @@ var Level1 = {
 
 var Level2 = {
     create: function() {
+    
         gamestate = "running";
         setupPhysics();
         setupMap("level2");
@@ -160,6 +164,14 @@ var Level2 = {
         createPlayer()
         createGroups()
         createInput();
+        menutheme = game.add.audio('theme');       
+        menutheme.volume = 1;
+        menutheme.loop = true;
+        menutheme.play();
+        
+        
+        
+        
     },
     update: function() {
         gameUpdateLoop()
@@ -252,8 +264,6 @@ function gameUpdateLoop(){
         else if (gamestate == 'win'){ fadeOut();}
         
 }
-
-
 
 
 
