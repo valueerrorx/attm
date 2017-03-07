@@ -344,7 +344,7 @@ function jump(){
 function setupPhysics(){
         //create physics 
         game.physics.startSystem(Phaser.Physics.P2JS);
-        game.physics.p2.gravity.y = 4000;
+        game.physics.p2.gravity.y = 2000;
         game.physics.p2.friction = 1;
         
         game.physics.p2.setImpactEvents(true);
