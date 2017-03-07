@@ -17,10 +17,6 @@
     <div id=preview name=preview ></div>
     <script type="text/javascript">
 
-
-
-
-    
     
 angle = 0; 
 nextFire = 0;
