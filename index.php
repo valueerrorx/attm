@@ -157,14 +157,7 @@ var Level2 = {
         createPlayer()
         createGroups()
         createInput();
-        menutheme = game.add.audio('theme');       
-        menutheme.volume = 1;
-        menutheme.loop = true;
-        menutheme.play();
-        
-        
-        
-        
+
     },
     update: function() {
         gameUpdateLoop()
@@ -351,7 +344,7 @@ function jump(){
 function setupPhysics(){
         //create physics 
         game.physics.startSystem(Phaser.Physics.P2JS);
-        game.physics.p2.gravity.y = 4000;
+        game.physics.p2.gravity.y = 2000;
         game.physics.p2.friction = 1;
         
         game.physics.p2.setImpactEvents(true);
@@ -677,7 +670,7 @@ function marioHit(object){
 
 function marioHit(playerbody,enemybody){
         
-        console.flog('ibinabug')
+        console.log('ibinabug')
         
         if (touching(enemybody.sprite,'up')  ){
             enemybody.reset(game.camera.x+game.camera.width,Math.random()*game.world.height-40);
