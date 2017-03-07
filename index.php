@@ -77,15 +77,9 @@ var PreloadState = {
         game.load.image('smoke3', 'assets/smoke3.png');
         game.load.image('smoke4', 'assets/smoke4.png'); 
         game.load.audio('jump', 'assets/jump.ogg');
-<<<<<<< HEAD
         game.load.tilemap('level11', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
-=======
-
         game.load.audio('theme', 'assets/mariotheme.ogg');
-
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
-
->>>>>>> d5d2d9c6354903884c1a8c4e2d2c5997ad34022e
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
