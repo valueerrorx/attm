@@ -55,7 +55,6 @@ var PreloadState = {
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
         game.load.spritesheet('menucorner','./assets/menucorner.png',64,64);
         game.load.image('platform', 'assets/cloud-platform.png');
-        game.load.audio('theme', 'assets/mariotheme.ogg');
         game.load.image('clouds', './assets/clouds.jpg');
         game.load.image('darkgreen', './assets/darkgreen.png');
         game.load.image('green', './assets/green.png');
@@ -667,19 +666,19 @@ function marioHit(playerbody,enemybody){
             enemybody.collides([playerCG,fireballCG]);
         }
         else {
-            console.log('dawischt !!!')
-            gamestate = "lost";
-            playerbody.setZeroVelocity();
-            playerbody.clearCollision(true,true);
-            playerbody.data.gravityScale = 1;
-            
-     
-            tween1 = game.add.tween(playerbody);
-            tween1.to({ y:"-50"}, 600, Phaser.Easing.Linear.None);
-            tween1.to({ y:"700"}, 600, Phaser.Easing.Linear.None);
-            tween1.start();
-            
-            
+            game.sound.play('dying');
+            while (game.sound.play('dying') == true) {
+                game.sound.stop('theme');
+                console.log('dawischt !!!')
+                gamestate = "lost";
+                playerbody.setZeroVelocity();
+                playerbody.clearCollision(true,true);
+                playerbody.data.gravityScale = 1;
+                tween1 = game.add.tween(playerbody);
+                tween1.to({ y:"-50"}, 600, Phaser.Easing.Linear.None);
+                tween1.to({ y:"700"}, 600, Phaser.Easing.Linear.None);
+                tween1.start();
+                }
             game.time.events.add(Phaser.Timer.SECOND * 2,function(){game.state.restart(); } , this).autoDestroy = true;
         }
 
