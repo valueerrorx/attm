@@ -558,6 +558,7 @@ function moveAliveEnemy(enemy) {
             enemy.velo *= -1;
             enemy.scale.x *=-1; } //set "back" schildi a few pixels to not fire touchingLeft/Right again and turn speed around
             enemy.body.velocity.x=enemy.velo;
+            enemy.body.x += Math.sign(enemy.body.velocity.x) * 1
          }
         else if (enemy.name == "bullet"){ 
             enemy.body.moveLeft(200);   
@@ -603,7 +604,11 @@ function fire_now() {
             fireball.body.setMaterial(fireballMaterial);
             fireball.body.collides([playerCG,enemyCG,groundCG]);
             fireball.body.onBeginContact.add(fireballCollision, fireball);
-            
+            fireball.events.onKilled.add(function(p){
+                smokeemitter.x = p.x;
+                smokeemitter.y = p.y;
+                smokeemitter.explode(1400, 2);
+                }, this);
             fireball.reset(mario.x, mario.y);
             
             if (mario.scale.x < 0){
@@ -624,9 +629,6 @@ function fireballCollision(object1){
     if (object1 && object1.sprite && object1.sprite.parent == enemies) {   //if the hit body is a sprite and belongs to enemies
 //         killEnemy(object1,fireball.body);
 
-        smokeemitter.x = object1.x;
-        smokeemitter.y = object1.y;
-        smokeemitter.explode(1400, 2);
         object1.sprite.kill();
         fireball.kill();
     }
