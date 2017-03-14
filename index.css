@@ -4,7 +4,7 @@
 
 body{
    
-    font-size: 6px;
+    font-size: 18px;
     color: white;
     font-family: 'Open Sans', Frutiger, Calibri, 'Myriad Pro', Myriad, sans-serif;
 
@@ -26,11 +26,11 @@ a {color: #eee; text-decoration:none;}
     width: 110px;
     color: white;
     position: absolute;
-    left: 20px;
-    top: 50px;
+    left: 370px;
+    top: 600px;
 }
 #stuff div {
-    width: 100px;
+    width: 300px;
     background-color: #ececec;
     padding: 4px;
     margin: 4px;
