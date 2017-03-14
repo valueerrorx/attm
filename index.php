@@ -77,7 +77,7 @@ var PreloadState = {
         game.load.audio('theme', 'assets/mariotheme.ogg');
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
-        game.load.tilemap('level3','./assets/level3.json',null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
         
@@ -157,7 +157,14 @@ var Level2 = {
         createPlayer()
         createGroups()
         createInput();
-
+        menutheme = game.add.audio('theme');       
+        menutheme.volume = 1;
+        menutheme.loop = true;
+        menutheme.play();
+        
+        
+        
+        
     },
     update: function() {
         gameUpdateLoop()
@@ -670,7 +677,7 @@ function marioHit(object){
 
 function marioHit(playerbody,enemybody){
         
-        console.log('ibinabug')
+        console.flog('ibinabug')
         
         if (touching(enemybody.sprite,'up')  ){
             enemybody.reset(game.camera.x+game.camera.width,Math.random()*game.world.height-40);
