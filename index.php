@@ -558,6 +558,7 @@ function moveAliveEnemy(enemy) {
             enemy.velo *= -1;
             enemy.scale.x *=-1; } //set "back" schildi a few pixels to not fire touchingLeft/Right again and turn speed around
             enemy.body.velocity.x=enemy.velo;
+            enemy.body.x += Math.sign(enemy.body.velocity.x) * 1
          }
         else if (enemy.name == "bullet"){ 
             enemy.body.moveLeft(200);   
