@@ -500,8 +500,11 @@ function setupMovingPlatforms(platform){
     platform.body.setMaterial(groundMaterial);
     //to(properties, duration, ease, autoStart, delay, repeat, yoyo)
     delay = game.rnd.integerInRange(0,2000);
-    game.add.tween(platform.body).to({y:"-200"},2000,Phaser.Easing.Sinusoidal.InOut, true, delay, -1, true); 
-
+    if(platform.name == "vertical"){
+        game.add.tween(platform.body).to({x:"+200"},2000,Phaser.Easing.Sinusoidal.InOut, true, delay, -1, true); 
+    } else {
+        game.add.tween(platform.body).to({y:"-200"},2000,Phaser.Easing.Sinusoidal.InOut, true, delay, -1, true); 
+    }
 }
 
 
