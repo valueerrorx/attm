@@ -26,8 +26,6 @@ a {color: #eee; text-decoration:none;}
     width: 110px;
     color: white;
     position: absolute;
-    left: 370px;
-    top: 600px;
 }
 #stuff div {
     width: 300px;
@@ -52,14 +50,14 @@ a {color: #eee; text-decoration:none;}
     display: block;
     width:800px;
     height:482px;
-    position: relative;
-    left: 140px;
+
     border: 1px solid #ececec;
   
     margin: 4px;
     box-shadow: inset 2px 2px 15px #ececec, 2px 2px 20px #000;
     border-radius: 4px;
     overflow:hidden;
+    margin: auto auto;
 }
 
 #preview canvas {
