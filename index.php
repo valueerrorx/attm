@@ -212,25 +212,19 @@ game.state.add('level3', Level3, false);
 
 
 
+function gameUpdateLoop(){        
+        if(mario.body.y > (game.world.height - 25)){
+            console.log('Below world border');
+            gamestate = "lost";
+            
+            mario.body.setZeroVelocity();
+            mario.body.clearCollision(true,true);
+            mario.body.data.gravityScale = 1;
+            
+            
+            game.time.events.add(Phaser.Timer.SECOND/2,function(){game.state.restart(); } , this).autoDestroy = true;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function gameUpdateLoop(){
         if ( gamestate == "lost"){
             mario.frame=7;
         }
@@ -263,6 +257,9 @@ function gameUpdateLoop(){
             enemies.forEach(moveAliveEnemy,this);
         }
         else if (gamestate == 'win'){ fadeOut();}
+        
+
+
         
 }
 
@@ -386,7 +383,7 @@ function setupPhysics(){
 
         
         game.physics.p2.setWorldMaterial(iceMaterial, true, true, true, true);
-        //game.physics.p2.updateBoundsCollisionGroup();
+        game.physics.p2.updateBoundsCollisionGroup();
         
 
 }
