@@ -651,27 +651,8 @@ function killEnemy(enemy,fireball) {
 
 
 
-
-
-
-
-
-// event listener erhält sprite.body als collisions "object"
-function marioHit(object){
-    if (object && object.sprite.name == "enemy"){
-            console.log('dawischt !!!')
-            game.state.restart();
-    
-    }
-
-}
-
-
-
 function marioHit(playerbody,enemybody){
-        
-        console.log('ibinabug')
-        
+
         if (touching(enemybody.sprite,'up')  ){
             enemybody.reset(game.camera.x+game.camera.width,Math.random()*game.world.height-40);
             enemybody.setCollisionGroup(enemyCG);
