@@ -50,7 +50,8 @@ var PreloadState = {
         loaderFull = game.add.sprite(0, 0, 'loaderFull');
         
         game.load.setPreloadSprite(loaderFull);
-        
+      
+       
         
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
         game.load.spritesheet('menucorner','./assets/menucorner.png',64,64);
@@ -81,6 +82,8 @@ var PreloadState = {
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
         
+     
+        
     },
     create: function() {
         var tween1=game.add.tween(loaderFull).to({alpha:"-30"},1000,Phaser.Easing.Linear.None);
@@ -102,8 +105,10 @@ var PreloadState = {
 var MenuState = {
     create: function () {
         sky = game.add.tileSprite(0, 0,game.world.width,game.world.height, 'clouds');
-
-        var button = game.add.button(100, 100, 'levelbutton', function(){ 
+         
+        game.input.onDown.add(gofull,this);
+       
+       var button = game.add.button(100, 100, 'levelbutton', function(){ 
             game.state.start('level1');}, this, 0, 0, 0);
         button.anchor.setTo(0.5,0.5);
         var number = game.add.bitmapText(button.x, button.y, 'desyrel','1', 34);
@@ -184,6 +189,9 @@ var Level3 = {
 
 
 var game = new Phaser.Game(800, 480, Phaser.AUTO, 'preview');
+
+ 
+
 game.state.add('boot', BootState, true);
 game.state.add('preload', PreloadState, false);
 game.state.add('menu', MenuState, false);
@@ -277,6 +285,7 @@ function createPlayer(){
 
 }
 
+function gofull() {game.scale.startFullScreen(false);}
 
 function createGroups(){
     fireballs = game.add.group();
