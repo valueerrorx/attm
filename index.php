@@ -35,6 +35,10 @@ var BootState = {
     },
     create: function() {
         game.state.start('preload');
+        
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+ 
     }
 }
     
@@ -51,7 +55,13 @@ var PreloadState = {
         
         game.load.setPreloadSprite(loaderFull);
         
+
         
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      
+       
+ 
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
         game.load.spritesheet('menucorner','./assets/menucorner.png',64,64);
         game.load.image('platform', 'assets/cloud-platform.png');
@@ -80,6 +90,7 @@ var PreloadState = {
         game.load.tilemap('level3','./assets/level3.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
+        game.load.image('startbildschirm', './assets/startbildschirm.png');
         
     },
     create: function() {
@@ -122,8 +133,16 @@ var MenuState = {
         var number = game.add.bitmapText(button.x, button.y, 'desyrel','3', 34);
         number.anchor.setTo(0.5,0.5);
         
+        startbildschirm = game.add.sprite(535,300, 'startbildschirm'); //Schriftzug der auf und ab geht im Hauptmenü
+        startbildschirm.scale.setTo(0.2); 
+        game.add.tween(startbildschirm).to({y: "-80"}, 2000, Phaser.Easing.Cubic.InOut, true, 0, false, true);
+        
+        game.input.onDown.add(gofull);
+        
+        
     },
     update: function() {
+     game.input.onDown.add(gofull);
 
     }
 }
@@ -254,6 +273,13 @@ function createPlayer(){
 
 }
 
+function gofull() {
+  if (game.scale.isFullScreen) {
+    game.scale.stopFullScreen();
+  } else {
+    game.scale.startFullScreen(false);
+  }
+}
 
 function createGroups(){
     fireballs = game.add.group();
@@ -599,6 +625,8 @@ function fireballCollision(object1){
         smokeemitter.explode(1400, 2);
         object1.sprite.kill();
         fireball.kill();
+        
+        
     }
 } 
 
