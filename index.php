@@ -622,6 +622,8 @@ function fireballCollision(object1){
         smokeemitter.explode(1400, 2);
         object1.sprite.kill();
         fireball.kill();
+        
+        
     }
 } 
 
