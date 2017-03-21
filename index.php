@@ -55,13 +55,13 @@ var PreloadState = {
         
         game.load.setPreloadSprite(loaderFull);
         
-        
+
         
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
       
        
-        
+ 
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
         game.load.spritesheet('menucorner','./assets/menucorner.png',64,64);
         game.load.image('platform', 'assets/cloud-platform.png');
@@ -87,11 +87,10 @@ var PreloadState = {
         game.load.audio('theme', 'assets/mariotheme.ogg');
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
-        game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level3','./assets/level3.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
-        
-     
+        game.load.image('startbildschirm', './assets/startbildschirm.png');
         
     },
     create: function() {
@@ -114,10 +113,8 @@ var PreloadState = {
 var MenuState = {
     create: function () {
         sky = game.add.tileSprite(0, 0,game.world.width,game.world.height, 'clouds');
-         
-        game.input.onDown.add(gofull,this);
-       
-       var button = game.add.button(100, 100, 'levelbutton', function(){ 
+
+        var button = game.add.button(100, 100, 'levelbutton', function(){ 
             game.state.start('level1');}, this, 0, 0, 0);
         button.anchor.setTo(0.5,0.5);
         var number = game.add.bitmapText(button.x, button.y, 'desyrel','1', 34);
@@ -135,6 +132,13 @@ var MenuState = {
         button.anchor.setTo(0.5,0.5);
         var number = game.add.bitmapText(button.x, button.y, 'desyrel','3', 34);
         number.anchor.setTo(0.5,0.5);
+        
+        startbildschirm = game.add.sprite(535,300, 'startbildschirm'); //Schriftzug der auf und ab geht im Hauptmenü
+        startbildschirm.scale.setTo(0.2); 
+        game.add.tween(startbildschirm).to({y: "-80"}, 2000, Phaser.Easing.Cubic.InOut, true, 0, false, true);
+        
+        
+        
         
     },
     update: function() {
@@ -205,9 +209,6 @@ var Level3 = {
 
 
 var game = new Phaser.Game(800, 480, Phaser.AUTO, 'preview');
-
- 
-
 game.state.add('boot', BootState, true);
 game.state.add('preload', PreloadState, false);
 game.state.add('menu', MenuState, false);
@@ -301,8 +302,6 @@ function createPlayer(){
 
 }
 
-//function gofull() {game.scale.startFullScreen(false);}
-
 function gofull() {
   if (game.scale.isFullScreen) {
     game.scale.stopFullScreen();
@@ -310,6 +309,7 @@ function gofull() {
     game.scale.startFullScreen(false);
   }
 }
+
 function createGroups(){
     fireballs = game.add.group();
     fireballs.createMultiple(20, 'fireball', 0, false);  //prepopulate group
@@ -583,7 +583,6 @@ function moveAliveEnemy(enemy) {
             enemy.velo *= -1;
             enemy.scale.x *=-1; } //set "back" schildi a few pixels to not fire touchingLeft/Right again and turn speed around
             enemy.body.velocity.x=enemy.velo;
-            enemy.body.x += Math.sign(enemy.body.velocity.x) * 1
          }
         else if (enemy.name == "bullet"){ 
             enemy.body.moveLeft(200);   
@@ -629,11 +628,7 @@ function fire_now() {
             fireball.body.setMaterial(fireballMaterial);
             fireball.body.collides([playerCG,enemyCG,groundCG]);
             fireball.body.onBeginContact.add(fireballCollision, fireball);
-            fireball.events.onKilled.add(function(p){
-                smokeemitter.x = p.x;
-                smokeemitter.y = p.y;
-                smokeemitter.explode(1400, 2);
-                }, this);
+            
             fireball.reset(mario.x, mario.y);
             
             if (mario.scale.x < 0){
@@ -654,6 +649,9 @@ function fireballCollision(object1){
     if (object1 && object1.sprite && object1.sprite.parent == enemies) {   //if the hit body is a sprite and belongs to enemies
 //         killEnemy(object1,fireball.body);
 
+        smokeemitter.x = object1.x;
+        smokeemitter.y = object1.y;
+        smokeemitter.explode(1400, 2);
         object1.sprite.kill();
         fireball.kill();
     }
