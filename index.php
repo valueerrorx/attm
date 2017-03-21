@@ -78,7 +78,7 @@ var PreloadState = {
         game.load.audio('theme', 'assets/mariotheme.ogg');
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
-        game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level3','./assets/level3.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
         
