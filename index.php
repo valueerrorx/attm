@@ -35,6 +35,10 @@ var BootState = {
     },
     create: function() {
         game.state.start('preload');
+        
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+ 
     }
 }
     
@@ -50,6 +54,11 @@ var PreloadState = {
         loaderFull = game.add.sprite(0, 0, 'loaderFull');
         
         game.load.setPreloadSprite(loaderFull);
+        
+        
+        
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
       
        
         
@@ -292,8 +301,15 @@ function createPlayer(){
 
 }
 
-function gofull() {game.scale.startFullScreen(false);}
+//function gofull() {game.scale.startFullScreen(false);}
 
+function gofull() {
+  if (game.scale.isFullScreen) {
+    game.scale.stopFullScreen();
+  } else {
+    game.scale.startFullScreen(false);
+  }
+}
 function createGroups(){
     fireballs = game.add.group();
     fireballs.createMultiple(20, 'fireball', 0, false);  //prepopulate group
