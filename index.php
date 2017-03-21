@@ -35,6 +35,10 @@ var BootState = {
     },
     create: function() {
         game.state.start('preload');
+        
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+ 
     }
 }
     
@@ -51,7 +55,13 @@ var PreloadState = {
         
         game.load.setPreloadSprite(loaderFull);
         
+
         
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      
+       
+ 
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
         game.load.spritesheet('menucorner','./assets/menucorner.png',64,64);
         game.load.image('platform', 'assets/cloud-platform.png');
@@ -292,6 +302,13 @@ function createPlayer(){
 
 }
 
+function gofull() {
+  if (game.scale.isFullScreen) {
+    game.scale.stopFullScreen();
+  } else {
+    game.scale.startFullScreen(false);
+  }
+}
 
 function createGroups(){
     fireballs = game.add.group();
@@ -637,6 +654,8 @@ function fireballCollision(object1){
         smokeemitter.explode(1400, 2);
         object1.sprite.kill();
         fireball.kill();
+        
+        
     }
 } 
 
