@@ -81,6 +81,7 @@ var PreloadState = {
         game.load.tilemap('level3','./assets/level2.json',null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tileset', './assets/tileset.png');
         game.load.image('ice-terrain', './assets/ice-terrain.png');
+        game.load.image('startbildschirm', './assets/startbildschirm.png');
         
      
         
@@ -126,6 +127,13 @@ var MenuState = {
         button.anchor.setTo(0.5,0.5);
         var number = game.add.bitmapText(button.x, button.y, 'desyrel','3', 34);
         number.anchor.setTo(0.5,0.5);
+        
+        startbildschirm = game.add.sprite(535,300, 'startbildschirm'); //Schriftzug der auf und ab geht im Hauptmenü
+        startbildschirm.scale.setTo(0.2); 
+        game.add.tween(startbildschirm).to({y: "-80"}, 2000, Phaser.Easing.Cubic.InOut, true, 0, false, true);
+        
+        
+        
         
     },
     update: function() {
