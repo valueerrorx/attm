@@ -144,7 +144,6 @@ var MenuState = {
         maptheme.play();
     },
     update: function() {
-     game.input.onDown.add(gofull);
 
     }
 }
