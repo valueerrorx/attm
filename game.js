@@ -53,6 +53,14 @@ function gameUpdateLoop(){
             else if ( jumpKey.isDown && !touching(mario, 'down') ) {
                 mario.frame=6;
             } 
+
+            if(mario && mario.body && mario.body.y > game.world.height){
+                mario.destroy();
+                gamestate = "lost"
+                setTimeout(function() {
+                    game.state.restart();
+                }, 2*1000);
+            }
             
             enemies.forEach(moveAliveEnemy,this);
         }
