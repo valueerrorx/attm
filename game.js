@@ -56,6 +56,7 @@ function gameUpdateLoop(){
 
             if(mario && mario.body && mario.body.y > game.world.height){
                 mario.destroy();
+                music.stop();
                 gamestate = "lost"
                 setTimeout(function() {
                     game.state.restart();
