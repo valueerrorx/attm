@@ -1,7 +1,7 @@
 # attm
 a tribute to mario
 
->:+1: this is just a little schoolproject 
+>this is just a little schoolproject 
 >do not download this.. we are going to mess it up while learning git 
 
 #
