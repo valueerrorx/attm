@@ -6,12 +6,12 @@
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300' rel='stylesheet' type='text/css'>
     <script src="phaser.min.js"></script> 
     <script src="vars.js"></script> 
-    <script src="game.js"></script>
+  
     <script src="boot.js"></script> 
     <script src="preload.js"></script> 
     <script src="menu.js"></script> 
     <script src="levels.js"></script> 
-     
+    <script src="game.js"></script>
     <script src="functions.js"></script>
     <script src="setup.js"></script>
   
