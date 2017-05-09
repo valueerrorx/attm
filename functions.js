@@ -1,4 +1,4 @@
- 
+
  
  
  
@@ -53,6 +53,7 @@ function moveAliveEnemy(enemy) {
             if (touching(enemy, 'left') || touching(enemy,'right')){
             enemy.body.velocity.x = enemy.velo; 
             enemy.velo *= -1;
+            enemy.body.x += 10 * Math.sign(enemy.velo)
             enemy.scale.x *=-1; } //set "back" schildi a few pixels to not fire touchingLeft/Right again and turn speed around
             enemy.body.velocity.x=enemy.velo;
          }

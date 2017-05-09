@@ -57,10 +57,11 @@ function gameUpdateLoop(){
             if(mario && mario.body && mario.body.y > game.world.height){
                 mario.destroy();
                 music.stop();
+                game.sound.play('dying');
                 gamestate = "lost"
                 setTimeout(function() {
                     game.state.restart();
-                }, 2*1000);
+                }, 2700);
             }
             
             enemies.forEach(moveAliveEnemy,this);
