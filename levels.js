@@ -10,6 +10,7 @@ var Level1 = {
         createPlayer()
         createGroups()
         createInput();
+        maptheme.stop();
     },
     update: function() {
         gameUpdateLoop()
@@ -28,7 +29,8 @@ var Level2 = {
         createEmitters()
         createPlayer()
         createGroups()
-        createInput();      
+        createInput();  
+        maptheme.stop();
         
     },
     update: function() {
@@ -48,6 +50,7 @@ var Level3 = {
         createPlayer()
         createGroups()
         createInput();
+        maptheme.stop();
     },
     update: function() {
         gameUpdateLoop()
