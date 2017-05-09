@@ -171,9 +171,9 @@ function marioHit(playerbody,enemybody){
         else {
             game.sound.play('dying');
             playerbody.clearCollision(true,true);
-            
-            game.sound.remove('theme');
-            console.log('dawischt !!!');
+
+            music.stop();
+
             gamestate = "lost";
             playerbody.setZeroVelocity();
             playerbody.data.gravityScale = 1;

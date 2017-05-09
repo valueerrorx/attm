@@ -12,9 +12,11 @@ var Level1 = {
         createInput();
         maptheme.stop();
         
-        music = game.add.audio('theme');
-        music.play();
-        
+       if (music && music.isPlaying) {}
+        else {
+            music = game.add.audio('theme');
+            music.play();
+         };
     },
     update: function() {
         gameUpdateLoop()
@@ -64,8 +66,11 @@ var Level3 = {
         createInput();
         maptheme.stop();
         
-        music = game.add.audio('theme');
-        music.play();
+         if (music && music.isPlaying) {}
+        else {
+            music = game.add.audio('theme');
+            music.play();
+         };
     },
     update: function() {
         gameUpdateLoop()
