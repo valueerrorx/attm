@@ -24,7 +24,7 @@
         game.load.image('bullet', './assets/bullet.png');
         game.load.spritesheet('bricks','./assets/bricks.png',32,32);
         game.load.audio('fireball', 'assets/fireball.ogg');
-        game.load.audio('dying', 'assets/dying.ogg');
+        game.load.audio('dying', 'assets/lose.ogg');
         game.load.spritesheet('gomba', 'assets/gomba-spritesheet.png', 64, 64);
         game.load.image('circlemask', 'assets/circlemask.png');
         game.load.spritesheet('levelbutton', 'assets/levelbutton.png', 64, 64);
