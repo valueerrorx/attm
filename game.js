@@ -68,4 +68,11 @@ function gameUpdateLoop(){
         }
         else if (gamestate == 'win'){ fadeOut();}
         
+        if(touching(mario, "down") == false){
+            mario.body.setMaterial(iceMaterial);
+        }
+        else{
+            mario.body.setMaterial(playerMaterial);
+        }
+        
 }
