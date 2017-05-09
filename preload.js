@@ -50,6 +50,8 @@
         
         tween1.start()
         tween2.onComplete.addOnce( function(){  game.state.start('menu');     }   );
+
+        game.input.onDown.addOnce(gofull);
         
     }
 }
