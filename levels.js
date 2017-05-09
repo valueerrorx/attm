@@ -11,6 +11,10 @@ var Level1 = {
         createGroups()
         createInput();
         maptheme.stop();
+        
+        music = game.add.audio('theme');
+        music.play();
+        
     },
     update: function() {
         gameUpdateLoop()
@@ -32,6 +36,14 @@ var Level2 = {
         createInput();  
         maptheme.stop();
         
+        
+        
+        if (music && music.isPlaying) {}
+        else {
+            music = game.add.audio('theme');
+            music.play();
+         };
+        
     },
     update: function() {
         gameUpdateLoop()
@@ -51,6 +63,9 @@ var Level3 = {
         createGroups()
         createInput();
         maptheme.stop();
+        
+        music = game.add.audio('theme');
+        music.play();
     },
     update: function() {
         gameUpdateLoop()

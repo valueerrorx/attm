@@ -220,8 +220,7 @@ function setupMap(level){
     green = game.add.tileSprite(0, 480, 4800, 960, 'green');
     darkgreen = game.add.tileSprite(0,480, 4800, 960, 'darkgreen');
 
-    music = game.add.audio('theme');
-    music.play();
+  
 
     mymap = game.add.tilemap(level);
     mymap.addTilesetImage('tileset');
