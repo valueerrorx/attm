@@ -172,7 +172,7 @@ function marioHit(playerbody,enemybody){
             game.sound.play('dying');
             playerbody.clearCollision(true,true);
             
-            game.sound.stop('theme');
+            music.stop();
             console.log('dawischt !!!');
             gamestate = "lost";
             playerbody.setZeroVelocity();
