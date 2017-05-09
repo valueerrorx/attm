@@ -35,7 +35,8 @@
         game.load.image('smoke4', 'assets/smoke4.png'); 
         game.load.audio('jump', 'assets/jump.ogg');
         game.load.audio('theme', 'assets/mariotheme.ogg');
-         game.load.audio('mapsound', 'assets/map2.ogg');
+          game.load.audio('stageclear', 'assets/stageclear.ogg');
+        game.load.audio('mapsound', 'assets/map2.ogg');
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level3','./assets/level3.json',null, Phaser.Tilemap.TILED_JSON);

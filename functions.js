@@ -216,6 +216,10 @@ function finishWorld(player,finish) {  // level finished
         player.static=true;  //make it static
         player.clearCollision(true,true);
         player.setZeroVelocity();
+        
+        music.stop();
+        
+        game.sound.play('stageclear');
        
         var first=game.add.tween(player.sprite).to({angle : 360}, 5000).start().onComplete.add(wingame, this);; //animate player movements
         }
