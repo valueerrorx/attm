@@ -27,9 +27,9 @@ var MenuState = {
         startbildschirm.scale.setTo(0.2); 
         game.add.tween(startbildschirm).to({y: "-80"}, 2000, Phaser.Easing.Cubic.InOut, true, 0, false, true);
         
-        game.input.onDown.add(gofull);
+
+        game.input.onDown.addOnce(gofull);
         if (music) {music.stop();}
-       
         maptheme = game.add.sound("mapsound",1,true,true);
         maptheme.stop();
         maptheme.play();
