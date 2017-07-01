@@ -29,50 +29,48 @@ function gameUpdateLoop(){
             mario.frame=7;
         }
         else if (gamestate == 'running'){
-            if ( cursors.left.isDown ) { 
-                mario.body.moveLeft(300); 
+            if ( cursors.left.isDown || left) { 
+                mario.body.moveLeft(300);
                 mario.scale.x = 1;
                 mario.animations.play('walk');
             }
-            else if ( cursors.right.isDown ) { 
+            else if ( cursors.right.isDown || right) { 
                 mario.body.moveRight(300);
                 mario.scale.x = -1;
                 mario.animations.play('walk');
+            } else {
+                 mario.animations.stop();
+                 mario.frame=0;
             }
-            else if (fireKey.isDown){
+
+            if (fireKey.isDown || fire){
                 mario.frame=8;
             } 
-            else {
-                mario.frame=0;
-            } 
-            
-            
-            if ( fireKey.isDown ) {
-                mario.frame=8;
-            } 
-            else if ( jumpKey.isDown && !touching(mario, 'down') ) {
+            else if ( (jumpKey.isDown || jump) && !touching(mario, 'down') ) {
                 mario.frame=6;
             } 
+
+
+            if(touching(mario, "down") == false){
+                mario.body.setMaterial(iceMaterial);
+            }
+            else{
+                mario.body.setMaterial(playerMaterial);
+            }
 
             if(mario && mario.body && mario.body.y > game.world.height){
                 mario.destroy();
                 music.stop();
                 game.sound.play('dying');
-                gamestate = "lost"
+                gamestate = "lost";
                 setTimeout(function() {
                     game.state.restart();
                 }, 2700);
             }
             
             enemies.forEach(moveAliveEnemy,this);
+
         }
         else if (gamestate == 'win'){ fadeOut();}
-        
-        if(touching(mario, "down") == false){
-            mario.body.setMaterial(iceMaterial);
-        }
-        else{
-            mario.body.setMaterial(playerMaterial);
-        }
         
 }

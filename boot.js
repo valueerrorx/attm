@@ -5,10 +5,11 @@ var BootState = {
         game.load.image('loaderEmpty', 'assets/loaderempty.png');
     },
     create: function() {
-        game.state.start('preload');
+
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
         
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.state.start('preload');
  
     }
 }

@@ -50,7 +50,7 @@ function createInput(){
         game.camera.follow(mario);   // camera allways center the player
         
         jumpKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        jumpKey.onDown.add(jump, this);
+        jumpKey.onDown.add(jump_now, this);
         
         fireKey = game.input.keyboard.addKey(Phaser.Keyboard.M);
         fireKey.onDown.add(fire_now, this);
@@ -58,6 +58,37 @@ function createInput(){
         
         button = game.add.button(game.camera.width-64,0, 'menucorner', function(){game.state.start('menu',true,false);}, this, 0, 1, 1);
         button.fixedToCamera=true;
+
+        buttonfire = game.add.button(game.camera.width-180, game.camera.height-60, 'buttonfire', null, this, 0, 1, 0, 1);
+        buttonfire.fixedToCamera = true;
+        buttonfire.anchor.setTo(0.5,0.5);
+        buttonfire.events.onInputOver.add(function(){fire=true; fire_now()});
+        buttonfire.events.onInputOut.add(function(){fire=false;});
+        buttonfire.events.onInputDown.add(function(){fire=true; fire_now()});
+        buttonfire.events.onInputUp.add(function(){fire=false;});
+
+        buttonjump = game.add.button(game.camera.width-60, game.camera.height-60, 'buttonjump', null, this, 0, 1, 0, 1);
+        buttonjump.fixedToCamera = true;
+        buttonjump.anchor.setTo(0.5,0.5);
+        buttonjump.events.onInputOver.add(function(){jump=true; jump_now();});
+        buttonjump.events.onInputOut.add(function(){jump=false;});
+        buttonjump.events.onInputDown.add(function(){jump=true; jump_now();});
+        buttonjump.events.onInputUp.add(function(){jump=false;});
+
+        buttonleft = game.add.button(100, game.camera.height-80, 'buttonhorizontal', null, this, 0, 1, 0, 1);
+        buttonleft.fixedToCamera = true;
+        buttonleft.scale.x = -1;
+        buttonleft.events.onInputOver.add(function(){left=true;});
+        buttonleft.events.onInputOut.add(function(){left=false;});
+        buttonleft.events.onInputDown.add(function(){left=true;});
+        buttonleft.events.onInputUp.add(function(){left=false;});
+
+        buttonright = game.add.button(100, game.camera.height-80, 'buttonhorizontal', null, this, 0, 1, 0, 1);
+        buttonright.fixedToCamera = true;
+        buttonright.events.onInputOver.add(function(){right=true;});
+        buttonright.events.onInputOut.add(function(){right=false;});
+        buttonright.events.onInputDown.add(function(){right=true;});
+        buttonright.events.onInputUp.add(function(){right=false;});
         
 }
 

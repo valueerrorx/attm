@@ -4,12 +4,6 @@
         loaderFull = game.add.sprite(0, 0, 'loaderFull');
         
         game.load.setPreloadSprite(loaderFull);
-        
-
-        
-        game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-      
        
  
         game.load.bitmapFont('desyrel', 'assets/font1.png', 'assets/font1.xml');
@@ -35,7 +29,7 @@
         game.load.image('smoke4', 'assets/smoke4.png'); 
         game.load.audio('jump', 'assets/jump.ogg');
         game.load.audio('theme', 'assets/mariotheme.ogg');
-          game.load.audio('stageclear', 'assets/stageclear.ogg');
+        game.load.audio('stageclear', 'assets/stageclear.ogg');
         game.load.audio('mapsound', 'assets/map2.ogg');
         game.load.tilemap('level1', './assets/level1.json',null, Phaser.Tilemap.TILED_JSON); 
         game.load.tilemap('level2', './assets/level2.json',null, Phaser.Tilemap.TILED_JSON); 
@@ -44,6 +38,10 @@
         game.load.image('ice-terrain', './assets/ice-terrain.png');
         game.load.image('startbildschirm', './assets/startbildschirm.png');
         
+        game.load.spritesheet('buttonhorizontal','./assets/buttons-big/button-horizontal.png', 96, 64);
+        game.load.spritesheet('buttonfire','./assets/buttons-big/button-circle-f.png', 96, 96);
+        game.load.spritesheet('buttonjump','./assets/buttons-big/button-circle-j.png', 96, 96);
+        game.load.spritesheet('buttonanchor','./assets/buttons-big/button-circle-a.png', 96, 96);
     },
     create: function() {
         var tween1=game.add.tween(loaderFull).to({alpha:"-30"},1000,Phaser.Easing.Linear.None);

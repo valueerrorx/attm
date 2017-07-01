@@ -16,8 +16,7 @@
 //------------------------------------------//
 
 var jumpHeightCounter = 0 ;
-function jump(){
-    mario.frame=5; 
+function jump_now(){
      
     if (touching(mario,'down')){
         mario.body.velocity.y = -800;

@@ -9,3 +9,6 @@ var enemies = "";
 var timer = 0;
 var fadeoutSprite;
 var level = 0;   
+
+var left, right;
+var jump, fire;
